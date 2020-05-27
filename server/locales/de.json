@@ -1,0 +1,48 @@
+{
+  "hello": "Morzens!",
+  "general": {
+    "folder": "Folder",
+    "file": "File",
+    "field": "Field"
+  },
+  "button": {
+    "add": "Add",
+    "delete": "Remove",
+    "docs": "Documentation",
+    "edit": "Edit",
+    "back": "◂ Back",
+    "open": "Open in Caspartooli",
+    "addRow": "Add new item",
+    "launch": "Start...",
+    "play": "Play",
+    "replay": "Re-Play",
+    "stop": "Stop",
+    "stopleft": "Stop left",
+    "stopright": "Stop right",
+    "stoplive": "Stop top",
+    "playleft": "Play Left",
+    "playright": "Play right",
+    "playlive": "Play top",
+    "update": "Update",
+    "overlayon": "FX PLAY",
+    "overlayoff": "FX STOP"
+  },
+  "headline": {
+    "edit": "Edit content lists",
+    "select": "Select a file"
+  },
+  "pagetitle": {
+    "home": "Welcome",
+    "select": "Choose content file",
+    "edit": "Edit content file"
+  },
+  "controller": {
+    "imgVideo": "IMS image to mixer",
+    "imgScreen": "IMS image to screen",
+    "clock": "Clock",
+    "headlines": "Headlines"
+  },
+  "error": {
+    "fileExisted": "File existed, please try again."
+  }
+}

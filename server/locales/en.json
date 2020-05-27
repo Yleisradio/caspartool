@@ -1,0 +1,17 @@
+{
+  "hello": "Howdy!",
+  "general": {
+    "folder": "Folder",
+    "file": "File"
+  },
+  "button": {
+    "add": "New",
+    "delete": "Delete",
+    "edit": "Edit",
+    "open": "Open in Caspartool"
+  },
+  "headline": {
+    "edit": "Edit content",
+    "select": "Select a file"
+  }
+}

@@ -1,0 +1,70 @@
+/*
+  Copyright 2020 SmartPX
+  CSS file for form items. Loaded after spx_forms.css
+*/
+
+.active {
+    background-color: orange !important;
+}
+
+.over {
+    background-color: pink !important;
+}
+
+.inFocus {
+    border: 2px solid orange !important;
+    border-left: 5px solid orange !important;
+}
+
+.itemrow {
+    border: 2px solid transparent;
+    border-left: 5px solid transparent;
+    border-radius: 0px;
+    padding: 10px;
+    margin: 2px;
+    box-sizing: border-box;
+    transition: border-left 0.5s, color 0.2s;
+}
+
+.itemrow:hover {
+    border-left: 5px solid orange;
+    color: orange;
+}
+
+.itemrow:nth-child(odd) {
+    background-color: #444758;
+}
+
+.itemrow:nth-child(even) {
+    background-color: #706e83;
+}
+
+.spx_input {
+    font-family: "Yle-Medium", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: 1em;
+    line-height: 110%;
+    border: 0px;
+    color: white;
+    font-weight: bold;
+    margin: 2px;
+}
+
+.input_active {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(236, 224, 171);
+    outline: blue 2px;
+}
+
+.input_deactive {
+    background-color: rgba(1, 1, 1, 0);
+    outline: none;
+    cursor: default;
+}
+
+/* Ripple effect */
+/* .glow {
+    transition: border-left 0.5s;
+}
+.glow:hover {
+    border-left: 5px solid orange;
+} */

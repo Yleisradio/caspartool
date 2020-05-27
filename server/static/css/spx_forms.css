@@ -1,0 +1,150 @@
+/*
+  Copyright 2020 SmartPX
+  CSS file for form items. Loaded after spx_layout.css
+*/
+
+::placeholder {
+    color: #555;
+    opacity: 1;
+}
+
+.spxformtext {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+.disabled_btn {
+    opacity: 0.2;
+}
+
+.btn {
+    height: 2.4em;
+    font-size: 0.8em;
+    color: white;
+    border: 2px solid transparent;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    text-transform: uppercase;
+    font-family: "Yle-Black", Arial, Helvetica, sans-serif;
+    text-shadow: rgb(0, 0, 0, 0.4) 0 0px 8px;
+    box-shadow: rgb(0, 0, 0, 0.4) 0 3px 8px;
+}
+
+.btn:hover {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.btnsmall {
+    font-size: 0.7em;
+    color: white;
+    border: 2px solid transparent;
+    margin-left: 1px;
+    margin-right: 1px;
+    text-transform: uppercase;
+    font-family: "Yle-Black", Arial, Helvetica, sans-serif;
+    text-shadow: rgb(0, 0, 0, 0.4) 0 0px 8px;
+    box-shadow: rgb(0, 0, 0, 0.4) 0 3px 8px;
+    height: 150%;
+    padding: 0.3em 1em;
+}
+
+.btnsmall:hover {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.floinput {
+    padding: 0.1em;
+    background-color: #706e83;
+    border: 0;
+    font-family: inherit;
+    font-size: 1em;
+    margin: 0px;
+    color: white;
+    font-family: "Yle-Medium", Arial, Helvetica, sans-serif;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.tablineinput {
+    font-family: "Yle-Black", Arial, Helvetica, sans-serif;
+    margin: 0px;
+    border: 0;
+    font-size: 1.2em; /* <-------------------------- HEADLINE SIZE IN UI*/
+    background-color: brown;
+    color: white;
+    display: inline-block;
+    padding: 0.1em;
+    padding-left: 0.4em;
+    padding-right: 0.2em;
+}
+
+.headlineinput {
+    font-family: "Yle-Black", Arial, Helvetica, sans-serif;
+    margin: 0px;
+    background-color: white;
+    color: black;
+    padding-left: 0.2em;
+    border: 0;
+    font-size: 2.4em; /* <-------------------------- HEADLINE SIZE IN UI*/
+}
+
+.tickerinput {
+    font-family: "Yle-Regular", Arial, Helvetica, sans-serif;
+    padding-left: 0.2em;
+    background-color: #222;
+    margin: 0px;
+    border: 0;
+    color: white;
+    font-size: 1.35em; /* <-------------------------- HEADLINE SIZE IN UI*/
+}
+
+.imsinput {
+    flex: auto;
+    flex-basis: 290px;
+    padding: 0.1em;
+    background-color: #706e83;
+    border: 0;
+    font-family: inherit;
+    font-size: 0.9em; /* Changed 15.04.2020 - was 1.em */
+    margin: 0px;
+    color: white;
+    font-family: "Yle-Medium", Arial, Helvetica, sans-serif;
+    height: 100%;
+    box-sizing: border-box;
+    height: 1.83em; /* Added 15.04.2020 */
+}
+
+.inlineInput {
+    padding: 0.1em;
+    background-color: inherit;
+    border: 0;
+    font-family: inherit;
+    font-size: 1em;
+    margin: 0px;
+    color: white;
+    font-family: "Yle-Medium", Arial, Helvetica, sans-serif;
+    height: 100%;
+    /* width: 100%; */
+    box-sizing: border-box;
+}
+
+.spxRoundedButton {
+    margin: 10px;
+    font-size: 60%;
+    padding: 0 2em;
+    border-radius: 1em;
+}
+
+/* Ripple effect */
+.ripple {
+    background-position: center;
+    transition: background 0.2s;
+}
+.ripple:hover {
+    /* background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%; */
+}
+.ripple:active {
+    background-color: #ffffff;
+    background-size: 100%;
+    transition: background 0s;
+}

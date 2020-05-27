@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caspartool | {{lang 'pagetitle.edit'}}</title>
+  <link rel="stylesheet" type="text/css" href="/css/spx_layout.css">
+  <link rel="stylesheet" type="text/css" href="/css/spx_forms.css">
+  <link rel="stylesheet" type="text/css" href="/css/spx_colors.css">
+  <link rel="stylesheet" type="text/css" href="/css/spx_dynlist.css">
+  <script src="/js/axios.min.js"></script>
+  <script src="/js/spx_caspartool.js"></script>
+  <script src="/js/spx_dragdrop.js"></script>
+  <script src="/js/Sortable.min.js"></script>
+</head>
+
+
+
+
+<body class="bg_black" onLoad="initSortable();">
+  <input type="hidden" id="filebasename" value="{{filebasename}}">
+  <div class=" spxMainPanel bg_grey60">
+    <div class="spxTopRow darkBg" style="border: 1px solid yellow;">
+      <div class="spxCell">
+        {{>navi}}
+        <span style="float:right;">SmartPX Caspartool</span>
+      </div>
+    </div>
+    <div class="spxMainSection">
+      <table style="width:55%; height:95%; margin:auto; border: 0px solid yellow;">
+        <tr>
+          <td style="height: 2em; padding:0.7em; color:white;" class="darkBg" align="left">
+            <span class="spxTableHead">{{lang 'headline.edit'}}</span><BR>
+            <span class="spxTableHeadsmall">{{lang 'general.file'}} {{datafile}}</span>
+          </td>
+        </tr>
+        <tr style="height:100%;">
+          <td align="center">
+            <div
+              style="width:100%; height:100%; overflow:auto; margin:auto; padding:0.5em; border: 0px solid yellow; text-align: center;"
+              class="bg_grey80">
+              <div id="itemList" style="width:100%; overflow:auto; margin:auto;border: 0px solid green;">
+                <div class="spxFlexContainer darkBg">
+                  <div class="spxFlexItem" style="color: white; text-align: left; font-size:0.5em; opacity:0.5;">
+                    {{lang 'general.field'}} 0
+                  </div>
+                  <div class="spxFlexItem" style="color: white; text-align: left; font-size:0.5em; opacity:0.5;">
+                    {{lang 'general.field'}} 1
+                  </div>
+                </div>
+                {{#each filedata.items}}
+                <div id="item{{@index}}" class="itemrow spxFlexContainer" data-spx-playout="">
+                  <input class="name spx_input input_deactive spxFlexItem" type="text" value="{{f0}}" readonly
+                    ondblclick="setactive(this);" onkeypress="javascript:doit_onkeypress(event,this);">
+                  <input class="titl spx_input input_deactive spxFlexItem" type="text" value="{{f1}}" readonly
+                    ondblclick="setactive(this);" onkeypress="javascript:doit_onkeypress(event,this);">
+                  <div class="handle">
+                    <div style="display:none;" id="deleteIcon"><A onclick="delRow(item{{@index}});"
+                        style="cursor:default;">&#10006</A></div>
+                    <div style="display:block;cursor:n-resize;" id="dragIcon">&#9776;</div>
+                  </div>
+                </div>
+                {{/each}}
+
+              </div>
+              <button class="spxformtext btn spxFlexItem bg_green ripple spxRoundedButton" style="align:center;"
+                onClick="addRow();">&#43; {{lang 'button.addRow'}}</button>
+
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="spxFlexContainer">
+            <button class="spxformtext btn spxFlexItem bg_blue ripple"
+              onClick="document.location='/contentlists';">{{lang 'button.back'}}</button>
+            <button class="spxformtext btn spxFlexItem bg_orange ripple"
+              onClick="cas();">{{lang 'button.open'}}</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Make sortable
+    function initSortable(){
+      // console.log('Making items sortable');
+      Sortable.create(itemList, {
+        handle: '.handle',
+        animation: 150,
+
+        // Element dragging ended
+        onEnd: function (evt) {
+          // console.log('Sorted', evt.item)
+          SaveData();
+        },
+      });
+    }
+  </script>
+  </div>
+</body>
+</html>

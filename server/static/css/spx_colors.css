@@ -1,0 +1,61 @@
+/*
+  Copyright 2020 SmartPX
+  CSS file for (bg)colors. Must be loaded after spx_layout.css
+*/
+
+.disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.darkBg {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.bg_green {
+    background-color: #54af3c;
+}
+
+.green {
+    color: #51ca2f;
+}
+
+.bg_yellow {
+    background-color: #e5c310;
+}
+
+.bg_orange {
+    background-color: #e57010;
+}
+
+.bg_blue {
+    background-color: #375ea3;
+}
+
+.bg_red {
+    background-color: #c80019;
+}
+
+.bg_black {
+    background-color: #000000;
+}
+
+.bg_white {
+    background-color: #ffffff;
+}
+
+.bg_grey80 {
+    background-color: #272833;
+}
+
+.bg_grey60 {
+    background-color: #2f303e;
+}
+
+.bg_grey40 {
+    background-color: #444758;
+}
+
+.bg_grey15 {
+    background-color: #706e83;
+}

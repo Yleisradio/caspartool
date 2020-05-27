@@ -1,0 +1,251 @@
+/*
+  Copyright 2020 SmartPX
+  CSS file for basic stuff. Must be loaded first.
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Yle-Black";
+    src: url("/fonts/Yle-Black.ttf");
+}
+
+@font-face {
+    font-family: "Yle-Medium";
+    src: url("/fonts/Yle-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Yle-Regular";
+    src: url("/fonts/Yle-Regular.ttf");
+}
+
+body {
+    background-color: #444;
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4vw;
+}
+
+a:link,
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: orange;
+    text-decoration: none;
+}
+
+a:active {
+    color: orange;
+    text-decoration: none;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+td {
+    vertical-align: middle;
+    text-align: left;
+}
+
+/* html elements above this line, custom classes alphabetized below */
+
+.center {
+    text-align: center !important;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: "Yle-Black", Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.dropdown-content {
+    font-family: "Yle-Regular", Arial, Helvetica, sans-serif;
+    display: none;
+    position: absolute;
+    background-color: #272833;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 0.3em 1em;
+    z-index: 1;
+    line-height: 2em;
+    font-size: 0.8em;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.headlineArea {
+    border-top: 2px solid grey;
+    vertical-align: top;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.nobr{
+    /* replacement for <NOBR> tags: <SPAN class="nobr">$1<SPAN> */
+    white-space: nowrap;
+}
+
+.rowhead {
+    margin: auto 1px auto 1px;
+    vertical-align: middle;
+    color: white;
+    font-family: "Yle-Black", Arial, Helvetica, sans-serif;
+    font-size: 0.85em;
+    line-height: 2em;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/*https://css-tricks.com/snippets/css/a-guide-to-flexbox/*/
+.spxFlexContainer {
+    display: flex; /* or inline-flex */
+    justify-content: center;
+    align-content: stretch;
+    box-sizing: border-box;
+    padding: 0.2em;
+    border: 0px solid yellow;
+}
+
+.spxFlexItem {
+    flex: auto;
+    white-space: nowrap;
+}
+
+.spxMainPanel {
+    height: 55vw;
+    display: table;
+    width: 100%;
+    max-width: 2000px;
+    text-align: center;
+    border: 0px solid yellow;
+    border-collapse: separate;
+    border-spacing: 2px;
+    margin: auto;
+}
+
+.spxTopRow {
+    display: table-row;
+    height: 4em;
+    color: white;
+    border: 1px solid red !important;
+    font-family: "Yle-Regular", Arial, Helvetica, sans-serif;
+}
+
+.spxBottomRow {
+    display: table-row;
+    height: 12.5em;
+    /* background: rgb(9, 36, 9); */
+    color: beige;
+    vertical-align: middle;
+}
+
+.spxMainSection {
+    height: 100%;
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+    border: 0px solid green;
+}
+
+.spxTableRow {
+    height: 100%;
+    display: table-row;
+    width: 100%;
+    vertical-align: middle;
+    border: 0px solid green;
+}
+
+.spxCell {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 10px !important;
+    text-align: left;
+    padding: 10px;
+}
+
+.spxPanelL {
+    width: 50%;
+    color: white;
+}
+
+.spxPanelC {
+    width: 0.1em;
+    /* background: red; */
+    color: white;
+}
+
+.spxPanelR {
+    color: white;
+    border-left: 2px solid grey;
+    margin-left: 10px;
+}
+
+.spxTableHead {
+    color: white;
+    text-transform: uppercase;
+    font-family: "Yle-Black", Arial, Helvetica, sans-serif;
+    text-shadow: rgba(255, 255, 255, 0.1) 0 0 2px;
+    line-height: 75%;
+    font-size: 0.75em;
+}
+
+.spxTableHeadsmall {
+    font-size: 0.6em;
+    font-family: "Yle-Regular", Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    text-shadow: rgba(255, 255, 255, 0.5) 0 0 2px;
+    opacity: 0.75;
+    line-height: 75%;
+}
+
+.tooltipzone {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltipzone .tooltip {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.1em 0.7em;
+    font-size: 0.9em;
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 10px);
+    transition: opacity 1.5s;
+}
+
+.tooltipzone:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.serverbtn {
+    background-color: rgba(0, 0, 0, 0);
+    font-family: "Yle-Regular", Arial, Helvetica, sans-serif;
+    padding: 0.3em 0.8em;
+    border-radius: 0px;
+    font-size: 0.8em;
+    margin: 0px;
+    color: white;
+    cursor: default;
+}

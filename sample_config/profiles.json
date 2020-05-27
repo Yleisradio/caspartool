@@ -1,0 +1,188 @@
+{
+    "description": "Configuration file for SPX Caspartool profiles. Copyright 2020 <tuomo@smartpx.fi>",
+    "updated": "Tuomo 31.03.2020 22:12",
+    "profiles": [
+        {
+            "name": "Yle Svenska News",
+            "templates": {
+                "name_left": {
+                    "templatefile": "YLE_SVENSKA/standard-namn_vanster",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 70
+                },
+                "name_right": {
+                    "templatefile": "YLE_SVENSKA/standard-namn_hoger",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 71
+                },
+                "name_live": {
+                    "templatefile": "YLE_SVENSKA/standard-direkt",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 72
+                },
+                "headline": {
+                    "templatefile": "YLE_SVENSKA/standard-ticker",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 50
+                },
+                "flockler": {
+                    "templatefile": "YLE_SVENSKA/standard-ticker",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 50
+                },
+                "clock": {
+                    "templatefile": "YLE_SVENSKA/standard-clock",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 100
+                },
+                "ims1": {
+                    "templatefile": "YLE_SVENSKA/ims/ims-image",
+                    "server": "LAPTOP",
+                    "channel": 1,
+                    "layer": 5
+                },
+                "ims2": {
+                    "templatefile": "YLE_SVENSKA/ims/ims-image",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 6
+                },
+                "ims3": {
+                    "templatefile": "YLE_SVENSKA/ims/ims-image",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 7
+                },
+                "ims4": {
+                    "templatefile": "YLE_SVENSKA/ims/ims-image",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 8
+                }
+            },
+            "FX": {
+                "FX1": {
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 40,
+                    "videoplay": "\"YLE_SVENSKA/SVYLE_OVERLAY_LOOP\" CUT 0 Linear RIGHT   LOOP",
+                    "mixerplay": "BLEND Multiply",
+                    "mixerstop": "BLEND Normal"
+                },
+                "FX2": {
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 50,
+                    "videoplay": "\"YLE_SVENSKA/SVYLE_OVERLAY_LOOP\" CUT 0 Linear RIGHT   LOOP",
+                    "mixerplay": "BLEND Multiply",
+                    "mixerstop": "BLEND Normal"
+                },
+                "FX3": {
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 60,
+                    "videoplay": "\"YLE_SVENSKA/SVYLE_OVERLAY_LOOP\" CUT 0 Linear RIGHT   LOOP",
+                    "mixerplay": "BLEND Multiply",
+                    "mixerstop": "BLEND Normal"
+                }
+            }
+        },
+        {
+            "name": "Yle Svenska Breaking",
+            "templates": {
+                "name_left": {
+                    "templatefile": "YLE_SVENSKA/breaking-namn_vanster",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 70
+                },
+                "name_right": {
+                    "templatefile": "YLE_SVENSKA/breaking-namn_hoger",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 71
+                },
+                "name_live": {
+                    "templatefile": "YLE_SVENSKA/breaking-direkt",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 72
+                },
+                "headline": {
+                    "templatefile": "YLE_SVENSKA/breaking-ticker",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 50
+                },
+                "flockler": {
+                    "templatefile": "YLE_SVENSKA/breaking-ticker",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 50
+                },
+                "clock": {
+                    "templatefile": "YLE_SVENSKA/breaking-clock",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 100
+                },
+                "ims1": {
+                    "templatefile": "YLE_SVENSKA/ims/ims-image",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 5
+                },
+                "ims2": {
+                    "templatefile": "YLE_SVENSKA/ims/ims-image",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 6
+                },
+                "ims3": {
+                    "templatefile": "YLE_SVENSKA/ims/ims-image",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 7
+                },
+                "ims4": {
+                    "templatefile": "YLE_SVENSKA/ims/ims-image",
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 8
+                }
+            },
+            "FX": {
+                "FX1": {
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 40,
+                    "videoplay": "\"YLE_SVENSKA/SVYLE_OVERLAY_LOOP\" CUT 0 Linear RIGHT   LOOP",
+                    "mixerplay": "BLEND Multiply",
+                    "mixerstop": "BLEND Normal"
+                },
+                "FX2": {
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 50,
+                    "videoplay": "\"YLE_SVENSKA/SVYLE_OVERLAY_LOOP\" CUT 0 Linear RIGHT   LOOP",
+                    "mixerplay": "BLEND Multiply",
+                    "mixerstop": "BLEND Normal"
+                },
+                "FX3": {
+                    "server": "TG",
+                    "channel": 1,
+                    "layer": 60,
+                    "videoplay": "\"YLE_SVENSKA/SVYLE_OVERLAY_LOOP\" CUT 0 Linear RIGHT   LOOP",
+                    "mixerplay": "BLEND Multiply",
+                    "mixerstop": "BLEND Normal"
+                }
+            }
+        }
+    ]
+}

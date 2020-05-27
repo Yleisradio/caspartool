@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+  <!--     C A S P A R T O O L   U I     -->
+  <!--     ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨    -->
+  <!--     (c) 2020 tuomo@smartpx.fi     -->
+  <!--          http://smartpx.fi        -->
+  <!--                                   -->
+  <!-- github.com/TuomoKu/SPX_Caspartool -->
+  <!--                                   -->
+  <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+  <!--
+    Scripts, no frameworks.
+    "Some extract of vanilla, enough to feed Godzilla."
+  -->
+
+  <script src="/js/axios.min.js"></script>
+  <script src="/js/fontawesome.all.min.js"></script>
+  <script src="/js/Sortable.min.js"></script>
+  <script src="/js/socket.io.js"></script>
+  <script>
+    var socket = io();
+  </script>
+  <script src="/js/spx_caspartool.js"></script>
+
+
+  <title>Caspartool | {{lang 'pagetitle.edit'}}</title>
+  <link rel="stylesheet" type="text/css" href="/css/spx_layout.css">
+  <link rel="stylesheet" type="text/css" href="/css/spx_forms.css">
+  <link rel="stylesheet" type="text/css" href="/css/spx_colors.css">
+  <link rel="stylesheet" type="text/css" href="/css/spx_dynlist.css">
+</head>
+
+
+<body class="bg_black">
+  <input type="hidden" id="filebasename" value="{{filebasename}}">
+  <input type="hidden" id="profiledata" value="{{profiledata}}">
+  <div id="SmartPX_App">
+    <div class="spxMainPanel bg_grey60">
+      <div class="spxTopRow darkBg">
+        <div class="spxCell">
+          <table style="width:100%; height:100%; border:0px solid white; padding: 0em;" ALIGN="CENTER" CELLPADDING=0
+            CELLSPACING=0>
+            <TR class="bg_grey40">
+              <TD style="padding: 0.7em;">
+                <div class="dropdown">&#9776;
+                  <div class="dropdown-content" style="white-space: nowrap;" )>
+                    <A HREF="/">Home</A><br>
+                    <A HREF="/contentlists/">Lists</A><br>
+                    <A HREF="" onClick="spx_system('openDatafolder');return false;">Open data folder...</A>
+                    <br>
+                    <A HREF="" onClick="spx_system('openTemplatefolder');return false;">Open template folder...</A>
+                    <br>
+                    <A HREF="" onClick="spx_system('restartServer');return false;">Restart Caspartool -server</A>
+                    <br>
+                    <A HREF="" onClick="aFunctionTest();return false;">Debug: Ping servers</A>
+                  </div>
+                </div>
+                &nbsp;
+                <div class="dropdown">
+                  <SPAN id="profname" style="text-transform: uppercase;">(profilename)</SPAN>&nbsp;<i
+                    class="fas fa-chevron-down"></i>
+                  <div class="dropdown-content">
+                    {{#each profiledataObj.profiles}}
+                    <SPAN class="nobr"><a HREF="#" id="prof{{@index}}" onclick="setProfile('{{name}}');">{{name}}</a><SPAN><BR>
+                    {{/each}}
+                  </div>
+                </div>
+              </TD>
+              <TD style="padding: 0.7em; text-align:right">
+                <span class="serverbtn" style="opacity: 0.5;" id="status"></span>
+                {{{ServerStatus}}}
+              </TD>
+            </TR>
+          </table>
+        </div>
+      </div>
+      <div class="spxTableRow" style="display: block;">
+        <table border=0 style="border: aqua 0px solid; width:100%; height:100%; border-collapse:collapse; padding:3em;"
+          cellpadding="10">
+          <tr>
+            <td style="width: 50%;">
+              <!-- left panel -->
+              <table style="width:100%; height:100%; margin:auto; border: 0px solid yellow;">
+                <tr style="height:100%;">
+                  <td>
+                    <div
+                      style="width:100%; height:100%; overflow:auto; margin:auto; padding:0.5em; border: 0px solid yellow; text-align:center;"
+                      class="bg_grey80">
+                      <div id="itemList" style="width:100%; overflow:auto; margin:auto;border: 0px solid green;">
+                        <div class="spxFlexContainer darkBg">
+                          <div class="spxFlexItem"
+                            style="color: white; text-align: left; font-size:0.5em; opacity:0.5;">
+                            {{lang 'general.field'}} 0
+                          </div>
+                          <div class="spxFlexItem"
+                            style="color: white; text-align: left; font-size:0.5em; opacity:0.5;">
+                            {{lang 'general.field'}} 1
+                          </div>
+                        </div>
+                        {{#each filedata.items}}
+                        <div id="item{{@index}}" class="itemrow spxFlexContainer" onClick="focusRow(this)"
+                          data-spx-playout="" data-spx-stoptext="" data-spx-changed="">
+                          <input class="name spx_input input_deactive spxFlexItem" type="text" value="{{f0}}" readonly
+                            ondblclick="setactive(this);" onkeypress="javascript:doit_onkeypress(event,this);">
+                          <input class="titl spx_input input_deactive spxFlexItem" type="text" value="{{f1}}" readonly
+                            ondblclick="setactive(this);" onkeypress="javascript:doit_onkeypress(event,this);">
+                          <div class="handle">
+                            <div style="display:none;" id="deleteIcon"><A onclick="delRow(item{{@index}});"
+                                style="cursor:default;">&#10006</A></div>
+                            <div style="display:block;cursor:n-resize;" id="dragIcon">&#9776;</div>
+                          </div>
+                        </div>
+                        {{/each}}
+                        <!-- -->
+
+                      </div>
+                      <button class="spxformtext btn spxFlexItem bg_green ripple spxRoundedButton"
+                        onClick="addRow();">&#43;
+                        {{lang 'button.addRow'}}</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr data-info="TG playback controls are here">
+                  <td>
+
+                    <!-- /////////////////////////////////////////////////////// -->
+                    <!-- TG playout controls -->
+                    <!-- /////////////////////////////////////////////////////// -->
+                    <div id="controls_play" data-info="Play buttons, display none / flex" class="spxFlexContainer"
+                      style="display: flex;">
+                      <button id="tgbtn1play" class="btn bg_green ripple spxFlexItem" data-spx-graphic="name_left"
+                        data-spx-stoptext="{{lang 'button.stopleft'}}"
+                        onClick="TGbuttonActionPLAY(this);">{{lang 'button.playleft'}}</button>
+
+                      <button id="tgbtn2play" class="btn bg_green ripple spxFlexItem" data-spx-graphic="name_right"
+                        data-spx-stoptext="{{lang 'button.stopright'}}"
+                        onClick="TGbuttonActionPLAY(this);">{{lang 'button.playright'}}</button>
+
+                      <button id="tgbtn3play" class="btn bg_green ripple spxFlexItem" data-spx-graphic="name_live"
+                        data-spx-stoptext="{{lang 'button.stoplive'}}"
+                        onClick="TGbuttonActionPLAY(this);">{{lang 'button.playlive'}}</button>
+
+                      <button id="tgbtn4a" class="btn bg_blue ripple spxFlexItem disabled"
+                        onClick="SPXGFX_TG(this,'UPDATE');">{{lang 'button.update'}}</button>
+                    </div>
+
+
+
+                    <!-- /////////////////////////////////////////////////////// -->
+                    <!-- TG stop controls -->
+                    <!-- /////////////////////////////////////////////////////// -->
+                    <div id="controls_stop" data-info="Stop buttons, display none / flex" class="spxFlexContainer"
+                      style="display: none;">
+
+                      <button id="stopbtn" class="btn bg_red ripple spxFlexItem" data-spx-graphic=""
+                        onClick="TGbuttonActionSTOP(this)">{{lang 'button.stop'}}</button>
+
+                      <span id="graphicInfo"
+                        style="margin: auto 10px ; color: #ffffff; width:50%; font-size:70%;">Playing on
+                        SRV-CH-LA</span>
+
+                      <button id="tgbtnplayagain" class="btn bg_green ripple spxFlexItem"
+                        onClick="TGbuttonActionPLAY(this);">{{lang 'button.replay'}}</button>
+
+                      <button id="tgbtn4b" class="btn bg_blue ripple spxFlexItem"
+                        onClick="SPXGFX_TG(this,'UPDATE');">{{lang 'button.update'}}</button>
+
+                    </div data-info="Stop buttons ended">
+                  </td>
+                </tr>
+              </table>
+
+
+              <!-- left panel ends-->
+            </td>
+            <td style="width: 50%; vertical-align:top;" valign="top">
+
+              <!-- right panel -->
+              <table style="width:100%; border: 0px solid pink;" border="0" data-comment="IMS-1-STARTS">
+                <tr>
+                  <td width="90%">
+                    <span class="spxTableHead">{{lang 'controller.imgVideo'}}</span>
+                    <div class="spxFlexContainer" data-info="IMS MIKSERILLE">
+                      <span class="spxFlexItem rowhead bg_grey40 center">1</span>
+                      <span class="spxFlexItem rowhead bg_grey40 center nobr">IMS ID</span>
+                      <input id="ims1" class="imsinput" type="text" value="" onDblClick="IMSdialog('1');"
+                        onInput="document.getElementById('imsBtn1B').classList.remove('disabled');">
+
+                      <button id="imsBtn1A" class="spxFlexItem btnsmall bg_green ripple" data-spx-status=""
+                        data-spx-stoptext="{{lang 'button.stop'}}" data-spx-playtext="{{lang 'button.play'}}"
+                        onClick="IMScommand('toggle','1');">{{lang 'button.play'}}</button>
+
+                      <button id="imsBtn1B" class="disabled spxFlexItem btnsmall bg_blue ripple"
+                        onClick="IMScommand('update','1');">{{lang 'button.update'}}</button>
+
+                      <button class="spxFlexItem btnsmall bg_green ripple hidden">{{lang 'button.overlayon'}}</button>
+                    </div>
+                  </td>
+                </tr>
+              </table data-comment="IMS-1-ENDED">
+
+              <BR>
+              <table style="width:100%; border: 0px solid pink;" border="0" data-comment="IMS-2-STARTS">
+                <tr>
+                  <td>
+                    <span class="spxTableHead" data-info="IMS STUDIO MONITORILLE">{{lang 'controller.imgScreen'}}</span>
+                    <div class="spxFlexContainer">
+                      <span class="spxFlexItem rowhead bg_grey40 center">2</span>
+                      <span class="spxFlexItem rowhead bg_grey40 center nobr">IMS ID</span>
+                      <input id="ims2" class="imsinput" type="text" value="" onDblClick="IMSdialog('2');"
+                        onInput="document.getElementById('imsBtn2B').classList.remove('disabled');">
+
+                      <button id="imsBtn2A" class="spxFlexItem btnsmall bg_green ripple" data-spx-status=""
+                        data-spx-stoptext="{{lang 'button.stop'}}" data-spx-playtext="{{lang 'button.play'}}"
+                        onClick="IMScommand('toggle','2');">{{lang 'button.play'}}</button>
+
+                      <button id="imsBtn2B" class="disabled spxFlexItem btnsmall bg_blue ripple"
+                        onClick="IMScommand('update','2');">{{lang 'button.update'}}</button>
+
+                      <button id="FXbtn1" class="spxFlexItem btnsmall bg_green ripple" data-spx-status=""
+                        data-spx-stoptext="{{lang 'button.overlayoff'}}" data-spx-playtext="{{lang 'button.overlayon'}}"
+                        onClick="FXcommand('1');">{{lang 'button.overlayon'}}</button>
+                    </div>
+
+
+                    <div class="spxFlexContainer">
+                      <span class="spxFlexItem rowhead bg_grey40 center">3</span>
+                      <span class="spxFlexItem rowhead bg_grey40 center nobr">IMS ID</span>
+                      <input id="ims3" class="imsinput" type="text" value="" onDblClick="IMSdialog('3');"
+                        onInput="document.getElementById('imsBtn3B').classList.remove('disabled');">
+
+                      <button id="imsBtn3A" class="spxFlexItem btnsmall bg_green ripple" data-spx-status=""
+                        data-spx-stoptext="{{lang 'button.stop'}}" data-spx-playtext="{{lang 'button.play'}}"
+                        onClick="IMScommand('toggle','3');">{{lang 'button.play'}}</button>
+
+                      <button id="imsBtn3B" class="disabled spxFlexItem btnsmall bg_blue ripple"
+                        onClick="IMScommand('update','3');">{{lang 'button.update'}}</button>
+
+                      <button id="FXbtn2" class="spxFlexItem btnsmall bg_green ripple" data-spx-status=""
+                        data-spx-stoptext="{{lang 'button.overlayoff'}}" data-spx-playtext="{{lang 'button.overlayon'}}"
+                        onClick="FXcommand('2');">{{lang 'button.overlayon'}}</button>
+                    </div>
+
+                    <div class="spxFlexContainer">
+                      <span class="spxFlexItem rowhead bg_grey40 center">4</span>
+                      <span class="spxFlexItem rowhead bg_grey40 center nobr">IMS ID</span>
+                      <input id="ims4" class="imsinput" type="text" value="" onDblClick="IMSdialog('4');"
+                        onInput="document.getElementById('imsBtn4B').classList.remove('disabled');">
+
+                      <button id="imsBtn4A" class="spxFlexItem btnsmall bg_green ripple" data-spx-status=""
+                        data-spx-stoptext="{{lang 'button.stop'}}" data-spx-playtext="{{lang 'button.play'}}"
+                        onClick="IMScommand('toggle','4');">{{lang 'button.play'}}</button>
+
+                      <button id="imsBtn4B" class="disabled spxFlexItem btnsmall bg_blue ripple"
+                        onClick="IMScommand('update','4');">{{lang 'button.update'}}</button>
+
+                      <button id="FXbtn3" class="spxFlexItem btnsmall bg_green ripple" data-spx-status=""
+                        data-spx-stoptext="{{lang 'button.overlayoff'}}" data-spx-playtext="{{lang 'button.overlayon'}}"
+                        onClick="FXcommand('3');">{{lang 'button.overlayon'}}</button>
+                    </div>
+
+                  </td>
+                </tr>
+
+              </table data-comment="IMS-2-ENDED">
+              <BR>
+              <table style="width:100%; border: 0px solid pink;" border="0" data-comment="IMS-2-STARTS">
+                <tr>
+                  <td>
+                    <span class="spxTableHead">{{lang 'controller.clock'}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="90%">
+                    <button id="clockBtn" class="spxFlexItem btnsmall bg_green ripple" data-spx-status=""
+                      data-spx-stoptext="{{lang 'button.stop'}}" data-spx-playtext="{{lang 'button.play'}}"
+                      onClick="ClockOnOff();">{{lang 'button.play'}}</button>
+                  </td>
+                </tr>
+              </table data-comment="IMS-2-ENDED">
+              <!-- right panel ends-->
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="spxBottomRow darkBg">
+        <div class="spxCell headlineArea" style="border:0px solid white;">
+          <span class="spxTableHead">{{lang 'controller.headlines'}}</span>
+          <table
+            style="border-spacing:0; border-collapse:collapse;margin-top: 0.5em; width:100%; border:0px solid white;"
+            CELLSPACING="0" CELLPADDING="0" ALIGN="CENTER">
+            <TR>
+              <TD ALIGN="LEFT">
+                <DIV>
+                  <input class="tablineinput" id="headline1" value="" oninput="AppState('EDITING');"
+                    onblur="AppState('DEFAULT');">
+                </DIV>
+              </TD>
+            </TR>
+            <TR>
+              <TD ALIGN=" LEFT">
+                <DIV>
+                  <input class="headlineinput" id="headline2" value="" style="width:98%;" oninput="AppState('EDITING');"
+                    onblur="AppState('DEFAULT');">
+                </DIV>
+              </TD>
+            </TR>
+          </table data-info="3 headlines table ended">
+
+          <BR>
+          <div style="float:left;">
+            <!-- headline control buttons -->
+
+            <button id="headlineBtn" class="spxFlexItem btn bg_green ripple" data-spx-status=""
+              data-spx-stoptext="{{lang 'button.stop'}}" data-spx-playtext="{{lang 'button.play'}}"
+              onClick="Headline('TOGGLE');">{{lang 'button.play'}}</button>
+
+            <button id="headlineUpdate" class="spxFlexItem btn bg_blue ripple"
+              onClick="Headline('UPDATE');">{{lang 'button.update'}}</button>
+
+
+          </div>
+          <div style="float:right;" class="spxFlexContainer" data-info="FLOCKLER">
+
+            <span class="spxFlexItem rowhead bg_grey40 center" style="padding: 0px 15px;">Flockler ID</span>
+            <input size=7 id="flocklerID" class="floinput" type="text" value="" placeholder="34530">
+            <span class="spxFlexItem rowhead bg_grey40 center" style="padding: 0px 15px;">Posts</span>
+            <input size=2 id="flocklerPosts" class="floinput" type="text" value="3">
+
+            <button id="FloBtn1" class="spxFlexItem btnsmall bg_green ripple" data-spx-status=""
+              data-spx-stoptext="{{lang 'button.stop'}}" data-spx-playtext="{{lang 'button.play'}}"
+              onClick="FloCommand('toggle');">{{lang 'button.play'}}</button>
+
+            <button id="FloBtn2" class="spxFlexItem btnsmall bg_blue ripple"
+              onClick="FloCommand('update');">{{lang 'button.update'}}</button>
+          </div>
+        </div data-info="headline area ended">
+      </div data-info="bottomrow ended">
+    </div data-info="mainPanel ended">
+  </div data-info="VueApp ended">
+
+  <script>
+
+    function initSortable(){
+      // console.log('Making items sortable');
+      Sortable.create(itemList, {
+        handle: '.handle',
+        animation: 150,
+
+        // Element dragging ended
+        onEnd: function (evt) {
+          // console.log('Sorted', evt.item)
+          SaveData();
+        },
+      });
+    }
+
+
+    // See spx_caspartool.js
+    spxInit('');
+    initSortable();
+  </script>
+  </div>
+  </div>
+</body>
+
+</html>

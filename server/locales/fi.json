@@ -1,0 +1,48 @@
+{
+  "hello": "Morzens!",
+  "general": {
+    "folder": "Kansio",
+    "file": "Tiedosto",
+    "field": "Kenttä"
+  },
+  "button": {
+    "add": "Uusi",
+    "delete": "Poista",
+    "docs": "Dokumentaatio",
+    "edit": "Muokkaa",
+    "back": "◂ Takaisin",
+    "open": "Avaa Caspartoolissa",
+    "addRow": "Lisää rivi",
+    "launch": "Aloita...",
+    "play": "Play",
+    "replay": "Re-Play",
+    "stop": "Stop",
+    "stopleft": "Stop left",
+    "stopright": "Stop right",
+    "stoplive": "Stop live",
+    "playleft": "Play left",
+    "playright": "Play right",
+    "playlive": "Play live",
+    "update": "Update",
+    "overlayon": "FX PLAY",
+    "overlayoff": "FX STOP"
+  },
+  "headline": {
+    "edit": "Muokkaa sisältölistaa",
+    "select": "Valitse tiedosto"
+  },
+  "pagetitle": {
+    "home": "Tervetuloa",
+    "select": "Valitse sisältötiedosto",
+    "edit": "Muokkaa sisältötiedostoa"
+  },
+  "controller": {
+    "imgVideo": "IMS video mikserille",
+    "imgScreen": "IMS studio monitorille",
+    "clock": "Kello",
+    "headlines": "Otsikot"
+  },
+  "error": {
+    "fileExisted": "Tiedosto oli jo olemassa. Yritä uudelleen."
+  }
+}
