@@ -31,7 +31,6 @@ Jump to:
 
 ---
 
-
 ![image](screenshots/SPX_Caspartool_UI_anim.gif?raw=true "Controller UI anim gif")
 
 Screen recording (gif) of using the app and controlling CasparCG playout.
