@@ -36,7 +36,7 @@ Jump to:
 Screen recording (gif) of using the app and controlling CasparCG playout.
 
 
-![SPX Caspartool / Controller GUI ](screenshots/spx_caspartool_ui.png?raw=true "Controller UI")
+![SPX Caspartool / Controller GUI ](screenshots/yle_caspartool_ui.png?raw=true "Controller UI")
 
 ## Installation and launch <a id="install"></a>
 
