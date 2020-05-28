@@ -1,8 +1,8 @@
-## SPX Caspartool
+## Yle Caspartool
 
 (doc updated TK 27.05.2020 15:10)
 
-SPC Caspartool is a browser based controller / client for html-template graphics playout using CasparCG server(s). Client is developed for a specific use case at Yle (http://www.yle.fi) and is not intended to be a generic playout client for [CasparCG](https://github.com/CasparCG/).
+Yle Caspartool is a browser based controller / client for html-template graphics playout using CasparCG server(s). Client is developed for a specific use case at Yle (http://www.yle.fi) and is not intended to be a generic playout client for [CasparCG](https://github.com/CasparCG/).
 
 Copyright 2020 <tuomo@smartpx.fi> / [MIT license](#MIT-LICENSE)
 
