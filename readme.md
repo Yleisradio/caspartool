@@ -49,7 +49,7 @@ npm install pm2 -g
 -   create an empty project folder for the application
 -   get files from the repo as zip package or with git:
 ```
-git clone https://github.com/TuomoKu/SPX_Caspartool.git
+git clone https://github.com/Yleisradio/caspartool.git
 ```
 
 
