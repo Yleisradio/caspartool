@@ -1,6 +1,6 @@
 ## Yle Caspartool
 
-(doc updated TK 27.05.2020 15:10)
+(doc updated TK 22.09.2020 13:15)
 
 Yle Caspartool is a browser based controller / client for html-template graphics playout using CasparCG server(s). Client is developed for a specific use case at Yle (http://www.yle.fi) and is not intended to be a generic playout client for [CasparCG](https://github.com/CasparCG/).
 
@@ -10,12 +10,13 @@ Copyright 2020 <tuomo@smartpx.fi> / [MIT license](#MIT-LICENSE)
 
 ### Changes:
 
-- v.1.0.1 - Obsolete and orphan files removed
-- v.1.0.2 - Code cleanup (todo, fixme)
-- v.1.0.3 - Special character support (fixes issue #5)
-- v.1.0.4 - Enabled flocker update (fixes issue #2)
-- v.1.0.5 - Fixes issue #7 (unable to drag new items) also allow removing of newly added items
+- v.1.0.7 - Fixes issue #2 (client sends unwanted space for empty fields)
 - v.1.0.6 - http folder renamed to static. NOBR tags removed. Profile name check on init.
+- v.1.0.5 - Fixes issue #7 (unable to drag new items) also allow removing of newly added items
+- v.1.0.4 - Enabled flocker update (fixes issue #2)
+- v.1.0.3 - Special character support (fixes issue #5)
+- v.1.0.2 - Code cleanup (todo, fixme)
+- v.1.0.1 - Initial release. Obsolete and orphan files removed
 
 
 ---

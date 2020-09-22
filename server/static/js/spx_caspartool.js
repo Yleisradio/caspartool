@@ -986,12 +986,15 @@ function spxAct(func, delay) {
 
 
 function SPXGFX_TG(caspartoolItem, cmd) {
+
+    console.log('HOWDY');
+
     // this handles TG commands only
-    let f0 = " ";
-    let f1 = " ";
-    let f2 = " ";
-    let f3 = " ";
-    let f4 = " ";
+    let f0 = "";
+    let f1 = "";
+    let f2 = "";
+    let f3 = "";
+    let f4 = "";
     let ACTIVETG = document.querySelector('.inFocus');
 
     if (!ACTIVETG) {
@@ -1002,12 +1005,12 @@ function SPXGFX_TG(caspartoolItem, cmd) {
 
 
     // Issue #5 fixed, see also SwapCharacters()
-    f0 = swap2HTMLntities(ACTIVETG.querySelector('.name').value) || ' '; // must be SPACE here for empty to avoid [Object object]
-    f1 = swap2HTMLntities(ACTIVETG.querySelector('.titl').value) || ' '; // -"-
+    f0 = swap2HTMLntities(ACTIVETG.querySelector('.name').value) || ''; // must be SPACE here for empty to avoid [Object object]
+    f1 = swap2HTMLntities(ACTIVETG.querySelector('.titl').value) || ''; // -"-
     // f0 = ACTIVETG.querySelector('.name').value || ' '; // must be SPACE here for empty to avoid [Object object]
     // f1 = ACTIVETG.querySelector('.titl').value || ' '; // -"-
 
-    // console.log('Fixed name/value', f0, f1);
+    console.log('Fixed name/value: [' + f0 + '][' + f1 + ']');
 
 
     let data = {};

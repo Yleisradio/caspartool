@@ -48,8 +48,17 @@ module.exports = {
         <data id=\"text\" value=\"Donald Trump\"/>
     </componentData>
     */
-    let decodedValue = decodeURIComponent(value) + " ";
-    return `<componentData id=\\"${fieldID}\\"><data id=\\"text\\" value=\\"${decodedValue}\\"/></componentData>`;
+
+    // 22.09.2020 Fixed issue #2 (blank space sent)
+    let decodedValue = decodeURIComponent(value);
+    if (decodedValue) {
+      return `<componentData id=\\"${fieldID}\\"><data id=\\"text\\" value=\\"${decodedValue}\\"/></componentData>`;
+    }
+    else
+    {
+      return '';
+    }
+    
   },
 
 

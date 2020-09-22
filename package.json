@@ -1,6 +1,6 @@
 {
   "name": "spx-caspartool",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Custom CasparCG client for Yle by SmartPX.fi.",
   "homepage": "https://github.com/TuomoKu",
   "main": "server/server.js",
